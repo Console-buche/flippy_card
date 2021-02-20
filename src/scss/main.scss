@@ -3,7 +3,18 @@ $debugbg_2: salmon;
 $debugbg_3: salmon;
 $debugbg_4: salmon;
 
+$cardheight: 150px;
+$cardwidth: 150px;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
 $textcolor: darken(#fff, 7%);
+$numberfontsize: 6.5em;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
   margin: 0;
@@ -32,10 +43,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 5px;
     font-weight: bold;
-    animation: 3s juicy infinite ease;
+    transition: 0.25s all ease;
 
     &:hover {
       cursor: pointer;
+      box-shadow: 0 0 5px pink;
+      letter-spacing: 4px;
+      transition: 0.25s all ease;
     }
   }
 
@@ -43,6 +57,8 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+
+    font-family: Montserrat;
   }
 
   .card_behind {
@@ -57,7 +73,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5em;
+    font-size: $numberfontsize;
 
     &:before {
       position: absolute;
@@ -88,8 +104,8 @@ body {
   }
 
   .card {
-    height: 200px;
-    width: 125px;
+    height: $cardheight;
+    width: $cardwidth;
     position: relative;
     transition: 1s transform;
     transform-style: preserve-3d;
@@ -110,7 +126,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 5em;
+      font-size: $numberfontsize;
       transform-origin: 50% 50%;
 
       &::after {
@@ -126,7 +142,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 5em;
+      font-size: $numberfontsize;
       transform-origin: 50% 50%; //un brin hacky pour éviter le décalage dans le texte lors du flip
 
       &::after {
@@ -152,10 +168,10 @@ body {
   animation-delay: 0.2s;
 }
 
-.anim1 {
+.anim-flip-first_half {
   animation: 0.5s tick forwards linear;
 }
-.anim2 {
+.anim-flip-second_half {
   animation: 0.5s tack forwards linear;
 }
 
@@ -188,19 +204,5 @@ body {
 
   100% {
     box-shadow: inset 0px 98px 80px -40px lighten(#000, 20%);
-  }
-}
-
-@keyframes juicy {
-  0% {
-    letter-spacing: 5px;
-  }
-
-  65% {
-    letter-spacing: 0px;
-  }
-
-  100% {
-    letter-spacing: 5px;
   }
 }

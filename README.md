@@ -30,9 +30,9 @@ Et donc à propos de ce projet : une web exp, une expérience, une production te
 ## Todo
 
 - Finir le travail sur le CSS
-- Automatiser l'animation
+- Faire un vrai bouton un peu sympa (start, stop + styles associés)
 - Tester, tester, tester
-- Nettoyer le code
+- Nettoyage
 
 - Fork à venir : countdown dd/jj/mm/ss
 - Fork à venir : Vue.js
