@@ -106,12 +106,12 @@ body {
     .card__front {
       pointer-events: none;
       background-color: $debugbg_1;
-      clip-path: polygon(0 0, 100% 0%, 100% 50%, 0 50%);
+      clip-path: polygon(0 0, 100% 0%, 100% 50.5%, 0 50.5%);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 5em;
-      transform-origin: bottom center;
+      transform-origin: 50% 50%;
 
       &::after {
         content: attr(count);
@@ -122,12 +122,12 @@ body {
       pointer-events: none;
       background-color: $debugbg_2;
       transform: rotate3d(1, 0, 0, 180deg);
-      clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+      clip-path: polygon(0 100%, 100% 100%, 100% 49.5%, 0 49.5%);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 5em;
-      transform-origin: 50% 50.25%; //un brin hacky pour éviter le décalage dans le texte lors du flip
+      transform-origin: 50% 50%; //un brin hacky pour éviter le décalage dans le texte lors du flip
 
       &::after {
         content: attr(count);
