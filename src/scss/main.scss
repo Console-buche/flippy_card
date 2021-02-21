@@ -1,3 +1,8 @@
+/* IMPORTS */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap");
+
+/* VARIABLES */
 $debugbg_1: salmon;
 $debugbg_2: salmon;
 $debugbg_3: salmon;
@@ -5,11 +10,25 @@ $debugbg_4: salmon;
 
 $cardheight: 150px;
 $cardwidth: 150px;
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
-
 $textcolor: darken(#fff, 7%);
 $numberfontsize: 6.5em;
+
+// FONTS
+
+$font: "Red Hat Text";
+$bgcolor: #211d2b;
+$titlecolor: #ffffff;
+$wide: 4px;
+$bodycopy: 14px;
+$bgcard_top: #343650;
+$bgcard_bot: lighten(#343650, 10%);
+$grayishblue: hsl(237, 18%, 59%);
+$softred: hsl(345, 95%, 68%);
+$vdesatblue: hsl(236, 21%, 26%);
+$desatblue: hsl(237, 18%, 59%);
+
+//////////////////////////////////////
+//////////////////////////////////////
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -58,22 +77,24 @@ body {
     flex-direction: column;
     position: relative;
 
-    font-family: Montserrat;
+    font-family: Red Hat Text;
+
+    //hinges
   }
 
   .card_behind {
-    box-shadow: 0px 0px 10px white;
     position: absolute;
     height: 100%;
     width: 100%;
     bottom: 0;
-    background: $debugbg_4;
+    background: transparent;
     pointer-events: none;
     opacity: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: $numberfontsize;
+    border-radius: 10px;
 
     &:before {
       position: absolute;
@@ -81,25 +102,36 @@ body {
       width: 100%;
       height: 100%;
       top: 0;
-      background: $debugbg_4;
+      background: $bgcard_bot;
       display: flex;
       justify-content: center;
       align-items: center;
-      clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+      border-radius: 10px;
+      //clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+      clip-path: polygon(
+        50% 100%,
+        100% 100%,
+        100% 55%,
+        95% 50%,
+        5% 50%,
+        0 55%,
+        0 100%
+      );
     }
 
     &:after {
       position: absolute;
+      border-radius: 10px;
       content: attr(counttop);
       width: 100%;
       height: 100%;
       top: 0;
       //transform: scaley(1.01);
-      background: $debugbg_3;
+      background: $bgcard_top;
       display: flex;
       justify-content: center;
       align-items: center;
-      clip-path: polygon(0 0, 100% 0%, 100% 50%, 0 50%);
+      clip-path: polygon(50% 0%, 100% 0, 100% 45%, 95% 50%, 5% 50%, 0 45%, 0 0);
     }
   }
 
@@ -121,13 +153,15 @@ body {
 
     .card__front {
       pointer-events: none;
-      background-color: $debugbg_1;
-      clip-path: polygon(0 0, 100% 0%, 100% 50.5%, 0 50.5%);
+      background-color: $bgcard_top;
+      clip-path: polygon(50% 0%, 100% 0, 100% 45%, 95% 50%, 5% 50%, 0 45%, 0 0);
+      border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: $numberfontsize;
       transform-origin: 50% 50%;
+      z-index: 100;
 
       &::after {
         content: attr(count);
@@ -136,9 +170,19 @@ body {
 
     .card__back {
       pointer-events: none;
-      background-color: $debugbg_2;
+      background-color: $bgcard_bot;
       transform: rotate3d(1, 0, 0, 180deg);
-      clip-path: polygon(0 100%, 100% 100%, 100% 49.5%, 0 49.5%);
+      //clip-path: polygon(0 100%, 100% 100%, 100% 49.5%, 0 49.5%);
+      clip-path: polygon(
+        50% 100%,
+        100% 100%,
+        100% 55%,
+        95% 50%,
+        5% 50%,
+        0 55%,
+        0 100%
+      );
+      border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -156,9 +200,19 @@ body {
 
 #shader {
   width: 100%;
-  height: 50%;
+  height: 100%;
   bottom: 0;
   position: absolute;
+  border-radius: 10px;
+  clip-path: polygon(
+    50% 100%,
+    100% 100%,
+    100% 55%,
+    95% 50%,
+    5% 50%,
+    0 55%,
+    0 100%
+  );
 }
 
 /* ANIMATION CLASSES */
@@ -169,10 +223,14 @@ body {
 }
 
 .anim-flip-first_half {
-  animation: 0.5s tick forwards linear;
+  animation: 0.5s tick forwards ease-in;
 }
 .anim-flip-second_half {
-  animation: 0.5s tack forwards linear;
+  animation: 0.75s tack forwards ease-out;
+}
+
+.anim-hide {
+  animation: 1.25s hidea;
 }
 
 /* KEYFRAMES */
@@ -192,6 +250,14 @@ body {
     transform: rotate3d(1, 0, 0, -90deg);
   }
 
+  30% {
+    transform: rotate3d(1, 0, 0, -180deg);
+  }
+
+  60% {
+    transform: rotate3d(1, 0, 0, -160deg);
+  }
+
   100% {
     transform: rotate3d(1, 0, 0, -180deg);
   }
@@ -199,10 +265,10 @@ body {
 
 @keyframes darken {
   0% {
-    box-shadow: inset 0px 0px 39px -40px lighten(#000, 20%);
+    box-shadow: inset 0px 120px 50px -90px black;
   }
 
   100% {
-    box-shadow: inset 0px 98px 80px -40px lighten(#000, 20%);
+    box-shadow: inset 0px 120px 50px 20px black;
   }
 }
