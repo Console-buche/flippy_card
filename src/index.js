@@ -1,20 +1,10 @@
 import "./scss/main.scss";
 
-
 /* composant carte */
 //state de la carte :
 let cardCounter = 0;
 let lacarte = document.getElementById("card")
 let shady = document.getElementById("shader")
-
-// DEV
-// Déclenchement manuel
-let button = document.getElementById("zou")
-button.addEventListener('click', () => {
-    lacarte.classList.add('anim-flip-first_half')
-}, false)
-
-
 
 //listeners pour l'enchaînement des anim
 lacarte.addEventListener("animationstart", (e) => {
@@ -22,7 +12,6 @@ lacarte.addEventListener("animationstart", (e) => {
     if (e.animationName == "tick") {
         updateCounter("c_behind", "counttop")
         shady.classList.add('animdarken')
-        
     } 
 })
 
@@ -55,12 +44,17 @@ lacarte.addEventListener("animationend", (e) => {
         setTimeout(() => {
             lacarte.classList.add('anim-flip-first_half')
         }, 500)
-
     
     }
 })
 
+////////////////
+///AUTO START///
+////////////////
 
+setTimeout(() => {
+lacarte.classList.add('anim-flip-first_half')
+}, 1000);
 
 //UTILS : increment counter
 //simple fonction pour incr le compteur en se basant sur le c_behind qui passe ensuite en state

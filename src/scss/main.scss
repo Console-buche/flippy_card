@@ -3,11 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap");
 
 /* VARIABLES */
-$debugbg_1: salmon;
-$debugbg_2: salmon;
-$debugbg_3: salmon;
-$debugbg_4: salmon;
-
 $cardheight: 150px;
 $cardwidth: 150px;
 $textcolor: darken(#fff, 7%);
@@ -23,7 +18,8 @@ $bodycopy: 14px;
 $bgcard_top: #343650;
 $bgcard_bot: lighten(#343650, 10%);
 $grayishblue: hsl(237, 18%, 59%);
-$softred: hsl(345, 95%, 68%);
+$softred: lighten(hsl(345, 95%, 68%), 10%);
+$softred_darkened: hsl(345, 95%, 68%);
 $vdesatblue: hsl(236, 21%, 26%);
 $desatblue: hsl(237, 18%, 59%);
 
@@ -33,53 +29,54 @@ $desatblue: hsl(237, 18%, 59%);
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
 }
 
 body {
   margin: 0;
   padding: 0;
   color: $textcolor;
-  background: darken(salmon, 5%);
+  background: $bgcolor;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("../img/bg-stars.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    background-image: url("../img/pattern-hills.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
 }
 
 .wrapper {
-  perspective: 500px;
-  width: 100%;
-  height: 100vh;
+  margin-top: 10%;
+  perspective: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  button {
-    margin-top: 5vh;
-    height: 40px;
-    width: 125px;
-    outline: none;
-    border: none;
-    background-color: $textcolor;
-    color: salmon;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-weight: bold;
-    transition: 0.25s all ease;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 0 5px pink;
-      letter-spacing: 4px;
-      transition: 0.25s all ease;
-    }
-  }
-
   .card_wrapper {
     display: flex;
     flex-direction: column;
     position: relative;
-
     font-family: Red Hat Text;
-
-    //hinges
   }
 
   .card_behind {
@@ -107,16 +104,8 @@ body {
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      //clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
-      clip-path: polygon(
-        50% 100%,
-        100% 100%,
-        100% 55%,
-        95% 50%,
-        5% 50%,
-        0 55%,
-        0 100%
-      );
+      clip-path: polygon(0 100%, 100% 100%, 100% 55%, 95% 50%, 5% 50%, 0 55%);
+      color: $softred;
     }
 
     &:after {
@@ -126,12 +115,12 @@ body {
       width: 100%;
       height: 100%;
       top: 0;
-      //transform: scaley(1.01);
       background: $bgcard_top;
       display: flex;
       justify-content: center;
       align-items: center;
-      clip-path: polygon(50% 0%, 100% 0, 100% 45%, 95% 50%, 5% 50%, 0 45%, 0 0);
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 95% 50%, 5% 50%, 0 45%);
+      color: $softred_darkened;
     }
   }
 
@@ -141,6 +130,8 @@ body {
     position: relative;
     transition: 1s transform;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d; /** fixes non transitive 3d from parent and child **/
 
     div {
       width: 100%;
@@ -154,14 +145,15 @@ body {
     .card__front {
       pointer-events: none;
       background-color: $bgcard_top;
-      clip-path: polygon(50% 0%, 100% 0, 100% 45%, 95% 50%, 5% 50%, 0 45%, 0 0);
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 95% 50%, 5% 50%, 0 45%);
       border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: $numberfontsize;
       transform-origin: 50% 50%;
-      z-index: 100;
+      z-index: 1;
+      color: $softred_darkened;
 
       &::after {
         content: attr(count);
@@ -171,23 +163,15 @@ body {
     .card__back {
       pointer-events: none;
       background-color: $bgcard_bot;
-      transform: rotate3d(1, 0, 0, 180deg);
-      //clip-path: polygon(0 100%, 100% 100%, 100% 49.5%, 0 49.5%);
-      clip-path: polygon(
-        50% 100%,
-        100% 100%,
-        100% 55%,
-        95% 50%,
-        5% 50%,
-        0 55%,
-        0 100%
-      );
+      transform: rotate3d(1, 0, 0, -180deg);
+      clip-path: polygon(0 100%, 100% 100%, 100% 55%, 95% 50%, 5% 50%, 0 55%);
       border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: $numberfontsize;
-      transform-origin: 50% 50%; //un brin hacky pour éviter le décalage dans le texte lors du flip
+      transform-origin: 50% 50.01%; //hacky mais solve le glitch texte blurry sur transform en backface pour god knpows la raison
+      color: $softred;
 
       &::after {
         content: attr(count);
@@ -196,37 +180,47 @@ body {
   }
 }
 
+.legend {
+  position: absolute;
+  bottom: -50%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: fit-content;
+  width: -moz-fit-content;
+  height: fit-content;
+  height: -moz-fit-content;
+  padding-top: 25px;
+  font-size: 0.75em;
+  font-family: Montserrat;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-shadow: 1px 2px 0px black;
+}
+
 /* utils ~ decor stuff */
 
 #shader {
-  width: 100%;
-  height: 100%;
+  width: $cardwidth;
+  height: $cardheight;
   bottom: 0;
   position: absolute;
   border-radius: 10px;
-  clip-path: polygon(
-    50% 100%,
-    100% 100%,
-    100% 55%,
-    95% 50%,
-    5% 50%,
-    0 55%,
-    0 100%
-  );
+  clip-path: polygon(0 100%, 100% 100%, 100% 55%, 95% 50%, 5% 50%, 0 55%);
 }
 
 /* ANIMATION CLASSES */
 
 .animdarken {
-  animation: 0.5s darken forwards linear;
-  animation-delay: 0.2s;
+  animation: 0.25s darken forwards linear;
+  animation-delay: 0.05s;
 }
 
 .anim-flip-first_half {
-  animation: 0.5s tick forwards ease-in;
+  animation: 0.25s tick forwards ease-in;
 }
 .anim-flip-second_half {
-  animation: 0.75s tack forwards ease-out;
+  animation: 0.5s tack forwards ease-out;
 }
 
 .anim-hide {
@@ -241,13 +235,13 @@ body {
   }
 
   100% {
-    transform: rotate3d(1, 0, 0, -90deg);
+    transform: rotate3d(1, 0, 0, -95deg);
   }
 }
 
 @keyframes tack {
   0% {
-    transform: rotate3d(1, 0, 0, -90deg);
+    transform: rotate3d(1, 0, 0, -95deg);
   }
 
   30% {
