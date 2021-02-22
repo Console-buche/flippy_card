@@ -3,6 +3,9 @@
   <p align="center">
     Cette flip card est d'abord un simple projet CSS, le helloworld des effets rigolos qui marchent toujours aussi bien.
     Carre carte sert de template de départ pour des exp/projets qui en font l'usage : animations, composants js...
+
+    <img width="250px" src="./demo_flippy.gif" alt="Demo de la flippy card terminée, au style du challenge FrontEndMentors"/>
+
   </p>
 </p>
 
