@@ -7,7 +7,7 @@
   </p>
 </p>
 
-[](https://raw.githubusercontent.com/Eightbitsofdata/flippy_card/master/flippy.gif)
+![Le gif du flippy](https://raw.githubusercontent.com/Eightbitsofdata/flippy_card/master/flippy.gif)
 
 <details open="open">
   <summary><h2 style="display: inline-block">Le menu</h2></summary>
