@@ -4,10 +4,10 @@
     Cette flip card est d'abord un simple projet CSS, le helloworld des effets rigolos qui marchent toujours aussi bien.
     Carre carte sert de template de départ pour des exp/projets qui en font l'usage : animations, composants js...
 
-    <img src="./flippy.gif" alt="Demo de la flippy terminée"/>
-
   </p>
 </p>
+
+[Le gif du flippy](https://raw.githubusercontent.com/Eightbitsofdata/flippy_card/master/flippy.gif)
 
 <details open="open">
   <summary><h2 style="display: inline-block">Le menu</h2></summary>
