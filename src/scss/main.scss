@@ -12,16 +12,10 @@ $numberfontsize: 6.5em;
 
 $font: "Red Hat Text";
 $bgcolor: #211d2b;
-$titlecolor: #ffffff;
-$wide: 4px;
-$bodycopy: 14px;
 $bgcard_top: #343650;
 $bgcard_bot: lighten(#343650, 10%);
-$grayishblue: hsl(237, 18%, 59%);
 $softred: lighten(hsl(345, 95%, 68%), 10%);
 $softred_darkened: hsl(345, 95%, 68%);
-$vdesatblue: hsl(236, 21%, 26%);
-$desatblue: hsl(237, 18%, 59%);
 
 //////////////////////////////////////
 //////////////////////////////////////
@@ -76,7 +70,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    font-family: Red Hat Text;
+    font-family: $font;
   }
 
   .card_behind {
