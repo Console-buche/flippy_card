@@ -7,7 +7,7 @@
   </p>
 </p>
 <p align="center">
-![Le gif du flippy](https://raw.githubusercontent.com/Eightbitsofdata/flippy_card/master/flippy.gif)
+  <img src="https://raw.githubusercontent.com/Eightbitsofdata/flippy_card/master/flippy.gif" alt="Le gif du flippy" />
 </p>
 <details open="open">
   <summary><h2 style="display: inline-block">Le menu</h2></summary>
