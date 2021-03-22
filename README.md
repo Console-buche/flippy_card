@@ -28,7 +28,7 @@ MIT et tout et tout. Servez-vous :-)
 
 ## Contact
 
-Sébastien Dubourg (Eightbitsofdata) - [@eightbitsofdata](https://twitter.com/eightbitsofdata) - email
+Sébastien Dubourg (Console_buche) - [@console_buche](https://twitter.com/console_buche) - email
 
 <!-- Inspi -->
 
