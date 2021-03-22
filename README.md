@@ -1,23 +1,12 @@
   <h3 align="center">Flip card à décliner</h3>
 
   <p align="center">
-    Cette flip card est d'abord un simple projet CSS, le helloworld des effets rigolos qui marchent toujours aussi bien.
-    Carre carte sert de template de départ pour des exp/projets qui en font l'usage : animations, composants js...
-
+    Une fippy card SCSS un peu fun, avec des chiffres sectionnés et ombrages sur anim
   </p>
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/Eightbitsofdata/flippy_card/master/flippy.gif" alt="Le gif du flippy" />
 </p>
-<details open="open">
-  <summary><h2 style="display: inline-block">Le menu</h2></summary>
-  <ol>
-    <li><a href="#roadmap">A faire</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Inspi</a></li>
-  </ol>
-</details>
 
 <!-- A propos  -->
 
@@ -28,12 +17,6 @@
 Hum.
 Et donc à propos de ce projet : une web exp, une expérience, une production temps libre... A décliner (et qui ne se perdra plus dans/un/dossier/random/\_\_sur/\_MON_FTP/quelquepart/en9898878v.xyz)
 
-<!-- Todo -->
-
-## Todo
-
-- Fork à venir : countdown dd/jj/mm/ss
-- Fork à venir : Vue.js
 
 <!-- LICENSE -->
 
